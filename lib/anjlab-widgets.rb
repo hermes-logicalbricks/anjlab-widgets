@@ -3,7 +3,7 @@ require "anjlab-widgets/engine"
 
 module Anjlab
   module Widgets
-    def self.date_format 
+    def self.date_format
       case ::I18n.default_locale
       when :ru
         "%d.%m.%Y"
@@ -11,6 +11,8 @@ module Anjlab
         "%m/%d/%Y"
       when :es
         "%d/%m/%Y"
+      when :'zh-TW'
+        "%Y-%m-%d"
       else
         "%Y-%m-%d"
       end

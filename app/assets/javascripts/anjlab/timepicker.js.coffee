@@ -40,14 +40,14 @@ class Timepicker extends NativeRailsTimepicker
       focus: $.proxy(@show, this)
       click: $.proxy(@show, this)
       blur: $.proxy(@hide, this)
-      
     }
 
-    @step    = options.step || @element.data('date-time-step') || 30
-    @minTime = options.minTime || @element.data('date-time-min') || 9 * 60
-    @maxTime = options.maxTime || @element.data('date-time-max') || 20 * 60
+    @step      = options.step || @element.data('date-time-step') || 30
+    @startTime = options.startTime || (@element.data('date-time-start') || 0) * 60
+    @endTime   = options.endTime || (@element.data('date-time-end') || 24) * 60
+    @minTime   = options.minTime || (@element.data('date-time-min') || 9) * 60
+    @maxTime   = options.maxTime || (@element.data('date-time-max') || 20) * 60
     
-
     @fillTimes()
     @update()
     @scrollPlaced = false
@@ -64,7 +64,7 @@ class Timepicker extends NativeRailsTimepicker
     e.preventDefault()
     target = $(e.target)
 
-    if target.is 'a' 
+    if target.is 'a'
       @time = target.data('time')
       @setValue()
       @update()
@@ -84,12 +84,12 @@ class Timepicker extends NativeRailsTimepicker
     @picker.find("a[data-time='#{@time}']").addClass('active')
 
   setValue: ->
-    @element.prop('value', @time)
+    @element.val(@time).change()
 
   fillTimes: ->
-    timeCnt = 0
+    timeCnt = @startTime
     html = []
-    while timeCnt < 24 * 60
+    while timeCnt < @endTime
       mm = timeCnt % 60
       hh = Math.floor(timeCnt / 60)
       mm = (if mm < 10 then '0' else '') + mm
@@ -113,7 +113,7 @@ class Timepicker extends NativeRailsTimepicker
     if e
       e.stopPropagation()
       e.preventDefault()
-    
+
     @element.trigger {
       type: 'show'
       date: @time
@@ -130,7 +130,7 @@ class Timepicker extends NativeRailsTimepicker
     @picker.hide()
     $(window).off 'resize', @place
 
-    @setValue()
+    # @setValue()
     @element.trigger {
       type: 'hide'
       date: @time

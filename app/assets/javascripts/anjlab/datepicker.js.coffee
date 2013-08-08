@@ -17,6 +17,15 @@ Locales =
       daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"]
       months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
       monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+  pt:
+    dates:
+      format: 'dd/mm/yyyy'
+      weekStart: 1
+      days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
+      daysShort: ["Dom", "Seg", "Ter", "Quar", "Qui", "Sex", "Sab", "Dom"]
+      daysMin: ["Do", "Se", "Te", "Qu", "Qu", "Se", "Sa", "Do"]
+      months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+      monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
   ru: 
     dates:
       format: 'dd.mm.yyyy'
